@@ -1,4 +1,5 @@
-import QueryProvider from "./QueryProvider"
+import AuthProvider from "./AuthProvider"
 import ThemeProvider from "./ThemeProvider"
+import TRPCQueryProvider from "./TRPCQueryProvider"
 
-export { ThemeProvider, QueryProvider }
+export { ThemeProvider, TRPCQueryProvider, AuthProvider }

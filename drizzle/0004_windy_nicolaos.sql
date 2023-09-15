@@ -1,0 +1,1 @@
+ALTER TABLE "todo" ADD COLUMN "user_id" text NOT NULL;

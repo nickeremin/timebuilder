@@ -1,5 +1,5 @@
 import { createEnv } from "@t3-oss/env-nextjs"
-import { z } from "zod"
+import * as z from "zod"
 
 export const env = createEnv({
   /**
@@ -8,6 +8,16 @@ export const env = createEnv({
    */
   server: {
     DATABASE_URL: z.string(),
+    NEXTAUTH_SECRET: z.string(),
+    GOOGLE_CLIENT_ID: z.string(),
+    GOOGLE_CLIENT_SECRET: z.string(),
+    DISCORD_CLIENT_ID: z.string(),
+    DISCORD_CLIENT_SECRET: z.string(),
+    GITHUB_CLIENT_ID: z.string(),
+    GITHUB_CLIENT_SECRET: z.string(),
+    NODEMAILER_EMAIL: z.string(),
+    NODEMAILER_EMAIL_PASS: z.string(),
+    RESEND_API_KEY: z.string(),
   },
 
   /**
@@ -26,5 +36,15 @@ export const env = createEnv({
   runtimeEnv: {
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
     DATABASE_URL: process.env.DATABASE_URL,
+    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+    DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
+    DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
+    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
+    GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
+    NODEMAILER_EMAIL: process.env.NODEMAILER_EMAIL,
+    NODEMAILER_EMAIL_PASS: process.env.NODEMAILER_EMAIL_PASS,
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
   },
 })

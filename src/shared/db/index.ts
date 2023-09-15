@@ -1,3 +1,4 @@
+import { DrizzleAdapter } from "@auth/drizzle-adapter"
 import * as dotenv from "dotenv"
 import { drizzle } from "drizzle-orm/postgres-js"
 import postgres from "postgres"
@@ -10,4 +11,6 @@ const connectionString = process.env.DATABASE_URL as string
 const client = postgres(connectionString)
 const db = drizzle(client, { schema })
 
-export { db }
+const adapter = DrizzleAdapter(db)
+
+export { db, adapter }

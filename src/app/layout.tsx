@@ -1,13 +1,25 @@
 import "./globals.css"
 
 import type { Metadata } from "next"
+import { Open_Sans } from "next/font/google"
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 
-import { QueryProvider, ThemeProvider } from "@/shared/config/providers"
+import { Toaster } from "@/shared/components/ui/toaster"
+import {
+  AuthProvider,
+  ThemeProvider,
+  TRPCQueryProvider,
+} from "@/shared/config/providers"
 
 export const metadata: Metadata = {
   title: "Timebuilder",
 }
+
+const openSans = Open_Sans({
+  weight: ["300", "400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+  style: "normal",
+})
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -15,14 +27,17 @@ interface RootLayoutProps {
 
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={openSans.className}>
       <body>
-        <QueryProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {children}
-          </ThemeProvider>
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryProvider>
+        <TRPCQueryProvider>
+          <AuthProvider>
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+              {children}
+            </ThemeProvider>
+          </AuthProvider>
+        </TRPCQueryProvider>
+        <Toaster />
+        <ReactQueryDevtools initialIsOpen={false} />
       </body>
     </html>
   )
